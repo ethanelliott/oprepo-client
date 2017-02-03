@@ -48,7 +48,7 @@ def askQuestion(question, default="yes"):
 
 #prints the help page
 def helpPage():
-    print ""
+    print ()
     print "----------------------------------------help----------------------------------------"
     print "help\t\t\tLoads this menu"
     print "generate\t\tCreate local info file to save directories"
@@ -531,7 +531,6 @@ def downloadToCustomDirectoryZip(customdDirectory):
             print "Logged out"
     print ""
 
-
 def generateDatFile():
     print "Local Data file generator"
     if datFileExists():
@@ -569,6 +568,13 @@ def readDatFile():
     jdat = json.loads(dat)
     return jdat
 
+def updateClient():
+    if(askQuestion("Are you sure you want to update?")):
+        os.system(r"C:\OPREPO\update.exe")
+        print "what"
+        sys.exit()
+        print "it should exit..."
+
 def main():
     running = True
     if not datFileExists():
@@ -591,6 +597,7 @@ def main():
             "csdrdn",
             "csdrdnzip",
             "generate",
+            "update"
         ]
         if i ==  co[0] or i == co[0].upper() or i == co[0].title():
             running = False
@@ -622,6 +629,8 @@ def main():
                 print "Invalid Directory"
         elif i ==  co[8] or i == co[8].upper() or i == co[8].title():
             generateDatFile()
+        elif i ==  co[9] or i == co[9].upper() or i == co[9].title():
+            updateClient()
         elif i == "":
             pass
         else:
